@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title> Log In </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- These are the styling sheets for each pages-->
+    <link rel="stylesheet" type="text/css" href="../CSS/CmsLogin.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <!-- List buttons for nagivation between pages -->
+                <li><a href="../CMS/CmsLogin.html">Login</a></li>
+                <li><a href="../CMS/ViewProduct.php">View Products</a></li>
+                <li><a href="../CMS/AddProducts.html">Add Products</a></li>
+                <li><a href="../CMS/EditProducts.html">Edit Products</a></li>
+                <li><a href="../CMS/DeleteProducts.html">Delete Products</a></li>
+                <li><a href="../CMS/ViewOrder.php">View Order</a></li>
+                <li><a href="../CMS/DeleteOrder.html">Delete Order</a></li>
+            </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- A class for the whole page display setting-->
+    <div class="main">
+
+        <!-- A class for creating the form box-->
+        <div class="form-box" style="height: 250px;">
+            <h2>Staff Login</h2>
+
+            <!-- A form class for inputting fields for user to input data-->
+            <form action="staff_login.php" method="post" class="input-group">
+
+                <!-- Fields for inputting username and password from Staff-->
+                <input type="text" name="Username" class="input-field" placeholder="Username" required>
+                <input type="password" name="Password" class="input-field" placeholder="Password" required>
+                <button type="submit" class="submit-btn"> <strong>SIGN IN</strong></button>
+
+            </form>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

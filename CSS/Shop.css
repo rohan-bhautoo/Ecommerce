@@ -1,0 +1,67 @@
+#shopContents .footer {
+  padding-top: 50px;
+}
+
+#Products {
+  font-size: 20px;
+}
+
+table {
+  border-spacing: 0 25px;
+}
+
+.sort {
+  padding: 5px 25px;
+}
+
+#sort {
+  font-size: 18px;
+  width: 160px;
+  padding: 12px 20px;
+  margin: 5px 0px;
+  border: none;
+  background: #f1f1f1;
+}
+
+#sortBtn {
+  background-color: black;
+  color: white;
+  padding: 10px 25px;
+  margin-left: 15px;
+  border: none;
+  cursor: pointer;
+  width: 90px;
+  opacity: 0.9;
+  font-size: 18px;
+}
+
+#sortBtn:hover {
+  opacity: 1;
+}
+
+tr {
+  width: 100%;
+}
+
+td {
+  margin-top: 0;
+  padding: 20px;
+  vertical-align: top;
+  border-bottom: 1px solid black;
+}
+
+.addToCartButton {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  padding: 16px 20px;
+  margin: 18px 0px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  opacity: 0.9;
+  font-size: 18px;
+}
+
+.addToCartButton:hover {
+  opacity: 1;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Add Products </title>
+
+    <!-- These are the styling sheets for each pages-->
+    <link rel="stylesheet" type="text/css" href="../CSS/CmsLogin.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <!-- List buttons for nagivation between pages -->
+                <li><a href="../CMS/CmsLogin.html">Login</a></li>
+                <li><a href="../CMS/ViewProduct.php">View Products</a></li>
+                <li><a href="../CMS/AddProducts.html">Add Products</a></li>
+                <li><a href="../CMS/EditProducts.html">Edit Products</a></li>
+                <li><a href="../CMS/DeleteProducts.html">Delete Products</a></li>
+                <li><a href="../CMS/ViewOrder.php">View Order</a></li>
+                <li><a href="../CMS/DeleteOrder.html">Delete Order</a></li>
+            </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- A class for the whole page display setting-->
+    <div class="main">
+
+        <!-- A class for creating the form box-->
+        <div class="form-box" style="height: 430px;">
+
+            <h2>Add Product</h2>
+
+            <!-- A form class for inputting fields for user to input data-->
+            <form action ="AddProduct.php" method="post" class="input-group">
+
+                <input type="text" class="input-field" name="ProductName" id="ProductName"
+                    placeholder="Enter Product Name" autocomplete="off" required>
+                <input type="text" class="input-field" name="Description" id="Description"
+                    placeholder="Enter Product Description" autocomplete="off" required>
+                <input type="text" class="input-field" name="Price" id="Price" placeholder="Enter Product Price"
+                    autocomplete="off" required>
+                <input type="text" class="input-field" name="Shipping" id="Shipping" placeholder="Enter Shipping cost"
+                    autocomplete="off" required>
+                <input type="text" class="input-field" name="AvailableQty" id="AvailableQty"
+                    placeholder="Enter Available Quantity" autocomplete="off" required>
+                <input type="text" class="input-field" name="Path" id="Path"
+                    placeholder="Enter Path" autocomplete="off" required>
+
+                <button type="submit" class="submit-btn"> <strong>Add Product</strong> </button>
+            </form>
+        </div>
+        
+    </div>
+     
+</body>
+
+</html>

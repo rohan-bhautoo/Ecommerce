@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Edit Products </title>
+
+    <!-- These are the styling sheets for each pages-->
+    <link rel="stylesheet" type="text/css" href="../CSS/CmsLogin.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <!-- List buttons for nagivation between pages -->
+                <li><a href="../CMS/CmsLogin.html">Login</a></li>
+                <li><a href="../CMS/ViewProduct.php">View Products</a></li>
+                <li><a href="../CMS/AddProducts.html">Add Products</a></li>
+                <li><a href="../CMS/EditProducts.html">Edit Products</a></li>
+                <li><a href="../CMS/DeleteProducts.html">Delete Products</a></li>
+                <li><a href="../CMS/ViewOrder.php">View Order</a></li>
+                <li><a href="../CMS/DeleteOrder.html">Delete Order</a></li>
+            </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- A class for the whole page display setting-->
+    <div class="main">
+
+        <!-- A class for creating the form box-->
+        <div class="form-box" style="height: 200px;">
+
+            <h2>Edit Products</h2>
+
+            <!-- A form class for inputting fields for user to input data-->
+            <form action="product_edit.php" method="post" class="input-group">
+
+                <input type="text" name="search" class="input-field" placeholder="Search for product" required>
+                <button type="submit" class="submit-btn"> <strong>Search for product to edit</strong> </button>
+
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+
