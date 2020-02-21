@@ -65,3 +65,7 @@ td {
 .addToCartButton:hover {
   opacity: 1;
 }
+
+.recommendations {
+  font-size: 20px;
+}

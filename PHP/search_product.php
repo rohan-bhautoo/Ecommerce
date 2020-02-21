@@ -11,10 +11,9 @@ outputHeader("Product");
         outputNavigationBar();
         ?>
         <div class="searchContainer">
-            <form action="search_product.php" method="post">
-                <input type="text" placeholder="Search by product name" name="search" id="search" autocomplete="off">
-                <button type="submit"><i class="fa fa-search"></i></button>
-                <ul class="list-group" id="result"></ul>
+            <form name="searchBar" action="search_product.php" method="post">
+                <input type="text" placeholder="Search..." name="search" id="searchInput">
+                <button type="submit" id="searchButton"><i class="fa fa-search"></i></button>
             </form>
         </div>
     </div>
@@ -34,6 +33,13 @@ $db = $mongoClient->Shop;
 //Select collection in database
 $collection = $db->Product;
 
+foreach ($_POST as $post_var) {
+
+    $recommendCriteria = [
+        '$text' => ['$search' => $post_var]
+    ];
+}
+
 //Extract the data that was sent to the server
 $search_string = filter_input(INPUT_POST, 'search', FILTER_SANITIZE_STRING);
 
@@ -46,21 +52,37 @@ $findCriteria = [
 //Find the product
 $cursor = $collection->find($findCriteria);
 
-//Output the results
-foreach ($cursor as $cust) {
-    echo '<div class="aside">';
-    echo "<p>" . $cust['ProductName'] . "</p>";
-    echo "<br>";
-    echo '<div class="image">';
-    echo "<img width=250 height=250 src = " . $cust['Path'] . ">";
+if ($collection->count($findCriteria) > 0) {
+    echo '<div id="recommendations" style="font-size: 20px; padding: 8px">';
     echo '</div>';
-    echo "<br>";
-    echo "$" . $cust['Price'];
-    echo "<br>";
-    echo '<button type="button" class="btn btn-default btn-sm">
+
+    echo '<h1 style="text-align: center">Results</h1>';
+    echo "<hr style='border-top: 1px solid black;'>";
+    //Output the results
+    foreach ($cursor as $prod) {
+        echo '<div class="aside">';
+        echo "<p>" . $prod['ProductName'] . "</p>";
+        echo "<br>";
+        echo '<div class="image">';
+        echo "<img width=250 height=250 src = " . $prod['Path'] . ">";
+        echo '</div>';
+        echo "<br>";
+        echo "$" . $prod['Price'];
+        echo "<br>";
+        echo '<button type="button" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart
             </button>';
-    echo "<hr>";
+        echo "</div>";
+    }
+
+    echo '<script type="module" src="../Javascript/ViewRecommended.js"></script>';
+} else {
+    $message = "No product found!";
+    echo "<script type='text/javascript'>
+    alert('$message');
+    window.location.replace('http://localhost/Website/PHP/Shop.php');
+    </script>";
+    return;
 }
 ?>
 

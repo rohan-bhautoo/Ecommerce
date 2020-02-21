@@ -41,10 +41,6 @@ outputHeader("Shop");
         <button type="button" id="sortBtn" onclick="window.location.reload();">Sort</button>
     </div>
 
-    <div id="recommendations">
-
-    </div>
-
     <div id="Products">
 
     </div>
@@ -53,8 +49,7 @@ outputHeader("Shop");
     outputFooter();
     ?>
 
-    <script type="text/javascript" src="../Javascript/DisplayProducts.js"></script>
-    <script type="module" src="../Javascript/ViewRecommended.js"></script>
+    <script type="text/javascript" src="../Javascript/DisplayProducts.js" src="../Javascript/ViewRecommended.js"></script>
 
 </div>
 

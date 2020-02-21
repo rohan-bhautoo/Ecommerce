@@ -1,3 +1,5 @@
+"use strict";
+
 // Import recommender class
 import { Recommender } from "./Recommender.js";
 
@@ -7,7 +9,6 @@ let recommender = new Recommender();
 /*
 Button to call search function.
 */
-
 document.getElementById("searchButton").onclick = search;
 
 window.onload = showRecommendation;
@@ -22,7 +23,17 @@ function search() {
 }
 
 function showRecommendation() {
-  document.getElementById(
-    "recommendations"
-  ).innerHTML = recommender.getTopKeyword();
+  let recommendProd = recommender.getTopKeyword();
+  var request = new XMLHttpRequest();
+
+  request.onload = function() {
+    let htmlStr = '<h1 style="text-align: center">Recommendations</h1>';
+    htmlStr += "<hr style='border-top: 1px solid black;'>";
+    document.getElementById("recommendations").innerHTML =
+      htmlStr + this.responseText;
+  };
+
+  request.open("POST", "RecommendProducts.php");
+  request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  request.send("ProductName=" + recommendProd);
 }

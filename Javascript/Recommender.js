@@ -1,37 +1,39 @@
-// Constructor for recommender object
+"use strict";
+
+//Constructor for the recommender object
 export class Recommender {
-  // Holds keywords
+  //Holds the keywords
   keywords = {};
 
-  // Keywords older than this window will be deleted
-  timeWindow = 10000;
+  //Keywords older than this window will be deleted
+  timeWindow = 20000;
 
   constructor() {
     this.load();
   }
 
-  // Add keyword to recommender
+  //Adds a keyword to the reommender
   addKeyword(word) {
-    // Increase count of keyword
-    if (this.keywords[word] === undefined) {
+    //Increase count of keyword
+    if (this.keywords[word] === undefined)
       this.keywords[word] = { count: 1, date: new Date().getTime() };
-    } else {
+    else {
       this.keywords[word].count++;
       this.keywords[word].date = new Date().getTime();
     }
 
     console.log(JSON.stringify(this.keywords));
 
-    // Save state of recommender
+    //Save state of recommender
     this.save();
   }
 
-  // Return popular keyword
+  //Returns the most popular keyword
   getTopKeyword() {
-    // Clean old keywords
-    this.deleleOldKeywords();
+    //Clean up old keywords
+    this.deleteOldKeywords();
 
-    // Return word with highest count
+    //Return word with highest count
     let maxCount = 0;
     let maxKeyword = "";
     for (let word in this.keywords) {
@@ -43,28 +45,23 @@ export class Recommender {
     return maxKeyword;
   }
 
-  /*
-    Saves state of recommender.  
-    */
+  /* Saves state of recommender. Currently this uses local storage, 
+        but it could easily be changed to save on the server */
   save() {
-    localStorage.recommenderKeywords === JSON.stringify(this.keywords);
+    localStorage.recommenderKeywords = JSON.stringify(this.keywords);
   }
 
-  /*
-    Loads state of recommender.
-    */
+  /* Loads state of recommender */
   load() {
-    if (localStorage.recommenderKeywords === undefined) {
-      this.keywords = {};
-    } else {
-      this.keywords = JSON.parse(localStorage.recommenderKeywords);
-    }
+    if (localStorage.recommenderKeywords === undefined) this.keywords = {};
+    else this.keywords = JSON.parse(localStorage.recommenderKeywords);
 
-    this.deleleOldKeywords();
+    //Clean up keywords by deleting old ones
+    this.deleteOldKeywords();
   }
 
-  // Removes keywords older than time window.
-  deleleOldKeywords() {
+  //Removes keywords that are older than the time window
+  deleteOldKeywords() {
     let currentTimeMillis = new Date().getTime();
     for (let word in this.keywords) {
       if (currentTimeMillis - this.keywords[word].date > this.timeWindow) {

@@ -52,6 +52,7 @@ $mObj = $db->Order->find();
     <table style = "width:100%">
     <tr>
         <!-- The columns of the table -->
+        <th>ProductID</th>
         <th>OrderNumber</th>
         <th>Price</th>
         <th>Quantity</th>
@@ -66,6 +67,7 @@ $mObj = $db->Order->find();
         ?>
         <tr>
             <!-- output all data of all orders made as rows in the table -->
+            <td><?php echo $row['ProductID'] ?></td>
             <td><?php echo $row['OrderNumber'] ?></td>
             <td><?php echo $row['Price'] ?></td>
             <td><?php echo $row['Quantity'] ?></td>
